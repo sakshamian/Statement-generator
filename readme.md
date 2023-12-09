@@ -37,11 +37,11 @@ npm install
 
 # Set environment variables (Create a .env file and add following)
 PORT=8000
-MONGO_URI=your-mongodb-uri
+MONGO_URI='your-mongodb-uri'
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_MAIL='your-email'
-SMTP_PASSWORD=service-password
+SMTP_PASSWORD='service-password'
 
 # Start the server (ensure MongoDB is running)
 npm start
