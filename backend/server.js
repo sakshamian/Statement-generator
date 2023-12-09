@@ -33,6 +33,7 @@ app.post('/api', async (req, res) => {
         const start = startDate.replace(/-/g, '/');
         const end = endDate.replace(/-/g, '/');
         console.log(email);
+        
         // retreiving data from database
         const testData = await Statements.find({
             email: email,
@@ -80,8 +81,9 @@ app.post('/email', async(req, res) => {
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             console.log(error);
+            res.send(error);
           } else {
-            console.log("Email sent successfully!");
+            res.status(200).send({message: "Email sent successfully"});
           }
         });
     } catch (err) {

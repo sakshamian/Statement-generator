@@ -41,13 +41,15 @@ const Statements = () => {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-          })
-            .then((res) => {
-              console.log(res);
-              if (res.status > 199 && res.status < 300) {
-                alert("Send Successfully !");
-              }
-            });
+          });
+          const result = await res.json();
+          console.log(result);
+          if(res.ok){
+            alert(result.message);
+          } else {
+            alert("Error");
+            console.log(res);
+          }
     };
 
   return (

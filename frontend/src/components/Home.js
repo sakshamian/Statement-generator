@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import AuthContext from "../context/AuthContext";
-// import ToastContext from "../context/ToastContext";
-
-
-
 const Home = () => {
-//   const { toast } = useContext(ToastContext);
-//   const { registerUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
    const searchStatements = async (userData) => {
@@ -21,17 +14,17 @@ const Home = () => {
         body: JSON.stringify({ ...userData }),
       });
       const result = await res.json();
-      console.log('xx', result);
 
       if (!result.error) {
-        // toast.success("user registered successfully! login into your account!");
-        navigate("/statements", { state: { data: result, name: userData.name} });
         console.log(result);
+        navigate("/statements", { state: { data: result, name: userData.name} });
       } else {
-        // toast.error(result.error);
+        alert(result.error);
+        console.log(result.error);
       }
     } catch (err) {
-      console.log(err.message);
+        alert(err.message);
+        console.log(err.message);
     }
   };
 
@@ -55,17 +48,14 @@ const Home = () => {
       !credentials.email ||
       !credentials.startDate ||
       !credentials.endDate
-    ) {
-    //   toast.error("please enter all the required fields!");
-      return;
-    }
+    ) return;
     
     const startDateObj = new Date(credentials.startDate);
     const endDateObj = new Date(credentials.endDate);
 
     // Check if the start date is smaller than the end date
     if(startDateObj > endDateObj) {
-        console.log("wrong");
+        alert("Start date must be less than end date!");
         return;
     }
 

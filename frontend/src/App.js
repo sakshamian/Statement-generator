@@ -6,15 +6,12 @@ import Home from './components/Home';
 function App() {
 
   return (
-    <>
-      <Navbar />
-      <Switch>
-          <Route path="/" element={<Home />} />
-          <Route path="/statements" element={<Statements />} />
-      </Switch>
-      {/* {
-        data ? <div></div> : <div></div>
-      } */}
+    <>  
+        <Navbar />
+        <Switch>
+            <Route path="/" element={<Home />} />
+            <Route path="/statements" element={<Statements />} />
+        </Switch>
     </>
   );
 }
